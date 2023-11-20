@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar';
-import Posts from './components/Posts';
-import PostDetailPage from './components/PostDetailPage';
+import NavBar from './features/NavBar';
+import Posts from './features/Posts';
+import PostDetailPage from './features/PostDetailPage';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
