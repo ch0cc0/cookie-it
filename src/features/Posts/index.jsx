@@ -1,10 +1,12 @@
 import React from 'react';
 import Card from '../../components/Card'
 
-function Posts() {
+function Posts({className, posts}) {
     return (
-      <div className="Posts">
-        
+      <div className={className}>
+        {posts.map((post) => (
+          <Card key={post.id} post={post} />
+        ))}
       </div>
     );
   }
