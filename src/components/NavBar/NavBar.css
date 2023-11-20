@@ -1,0 +1,70 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem;
+    min-height: 4rem;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 3.5rem;
+    margin-right: 1rem;
+}
+
+.search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search input {
+    width: 60%;
+    padding: 0.5rem 0.7rem;
+    border-radius: 1rem;
+}
+
+.search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive design: Adjustments for different screen sizes */
+@media (max-width: 768px) {
+
+    .navbar-logo img {
+        height: 3rem;
+    }
+
+    .title {
+        padding-right: 0.4rem;
+    }
+
+    .search {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .search input {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-logo img {
+        height: 2.5rem;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .search input {
+        width: 90%;
+    }
+}
