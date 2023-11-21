@@ -5,6 +5,7 @@ import Posts from './features/Posts';
 import PostDetailPage from './features/PostDetailPage';
 import logo from './media/placeholder.png';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { getSubreddits, getSubredditPosts, getPostComments } from './api/reddit';
 
 const templatePosts = [
   {
@@ -33,13 +34,15 @@ const templatePosts = [
   }
 ]
 
+const SubRedditPosts = getSubredditPosts();
+
 function App() {
   return (
     <div className="App">
       <Router>
             <NavBar />
             <Routes>
-              <Route path="/" element={<Posts className='posts' posts={templatePosts}/>} />
+              <Route path="/" element={<Posts className='posts' posts={SubRedditPosts}/>} />
               <Route path="/posts/:postId" element={<PostDetailPage />} />
             </Routes>
       </Router>
