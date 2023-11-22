@@ -72,5 +72,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    @apply bg-[#73BBC9]
   }
+}
+
+img[src=""],
+img:not([src]) {
+  visibility: hidden;
 }

@@ -1,7 +1,7 @@
 export const API_ROOT = 'https://www.reddit.com';
 
 export const getRedditPosts = async () => {
-    const response = await fetch(`${API_ROOT}/.json`);
+    const response = await fetch(`${API_ROOT}/.json?limit=30`);
     const json = await response.json();
   
     return json.data.children.map((post) => post.data);
@@ -15,7 +15,7 @@ export const getSubreddits = async () => {
 };
 
 export const getSubredditPosts = async (subreddit) => {
-    const response = await fetch(`${API_ROOT}${subreddit}.json`);
+    const response = await fetch(`${API_ROOT}${subreddit}.json?limit=30`);
     const json = await response.json();
 
     return json.data.children.map((post) => post.data);
