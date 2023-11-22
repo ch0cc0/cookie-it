@@ -16,34 +16,16 @@ import {
 
 function PostCard({post, getPostImageUrl}) {
 
-    const [isUpvoted, setIsUpvoted] = useState(false);
-    const [isDownvoted, setIsDownvoted] = useState(false);
-    const [isCommentsExpanded, setIsCommentsExpanded] = useState(false);
-
     const imageUrl = getPostImageUrl(post)
 
-    const toggleUpvote = () => {
-        setIsUpvoted(!isUpvoted);
-        if (isDownvoted) setIsDownvoted(false);
-    };
-
-    const toggleDownvote = () => {
-        setIsDownvoted(!isDownvoted);
-        if (isUpvoted) setIsUpvoted(false);
-    };
-
-    const toggleExpandComments = () => {
-        setIsCommentsExpanded(!isCommentsExpanded);
-    };
-
     return (
-        <Card>
-            <CardHeader>
+        <Card class="m-4 hover:shadow-2xl hover:bg-zinc-300 w-64 md:w-96 lg:w-2/6 bg-zinc-200 rounded-md">
+            <CardHeader bg-slate-500>
                 <CardTitle>{post.title}</CardTitle>
-                <CardDescription>{post.selftext}</CardDescription>
+                <CardDescription class="line-clamp-3 overflow-hidden">{post.selftext}</CardDescription>
             </CardHeader>
-            <CardContent>
-                <img src={imageUrl} />
+            <CardContent bg-slate-500>
+                <img class="w-full h-50 object-cover" src={imageUrl} />
             </CardContent>
             <CardFooter>
                 <p>{post.author}</p>

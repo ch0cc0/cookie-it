@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/PostCard'
+import PostCard from '../../components/PostCard'
 
 function Posts({className, posts}) {
 
@@ -19,9 +19,9 @@ function Posts({className, posts}) {
 }
 
     return (
-      <div className={className}>
+      <div class='flex flex-col m-3 space-y-5	items-center'>
         {posts.map((post) => (
-          <Card key={post.id} post={post} getPostImageUrl={getPostImageUrl}/>
+          <PostCard key={post.id} post={post} getPostImageUrl={getPostImageUrl}/>
         ))}
       </div>
     );
