@@ -1,7 +1,7 @@
 export const API_ROOT = 'https://www.reddit.com';
 
 export const getRedditPosts = async () => {
-    const response = await fetch(`${API_ROOT}.json`);
+    const response = await fetch(`${API_ROOT}/.json`);
     const json = await response.json();
   
     return json.data.children.map((post) => post.data);

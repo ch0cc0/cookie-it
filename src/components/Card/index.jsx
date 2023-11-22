@@ -5,11 +5,13 @@ import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { BiUpvote } from 'react-icons/bi';
 import { BiDownvote } from "react-icons/bi";
 
-function Card({post}) {
+function Card({post, getPostImageUrl}) {
 
     const [isUpvoted, setIsUpvoted] = useState(false);
     const [isDownvoted, setIsDownvoted] = useState(false);
     const [isCommentsExpanded, setIsCommentsExpanded] = useState(false);
+
+    const imageUrl = getPostImageUrl(post)
 
     const toggleUpvote = () => {
         setIsUpvoted(!isUpvoted);
@@ -33,7 +35,7 @@ function Card({post}) {
             </div>
             <div className='card-post-wrap'>
                 <div className='card-img'>
-                    <img src={post.url} alt={post.title} />
+                    <img src={imageUrl} alt={post.title} />
                 </div>
                 <div className='card-sidebar'>
                     <div className='votes'>

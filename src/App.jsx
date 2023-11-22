@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import NavBar from './features/NavBar';
 import Posts from './features/Posts';
 import PostDetailPage from './features/PostDetailPage';
 import logo from './media/placeholder.png';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { getSubreddits, getSubredditPosts, getPostComments } from './api/reddit';
+import { getRedditPosts, getSubreddits, getSubredditPosts, getPostComments } from './api/reddit';
 
 const templatePosts = [
   {
@@ -34,15 +34,26 @@ const templatePosts = [
   }
 ]
 
-const SubRedditPosts = getSubredditPosts();
-
 function App() {
+
+  const [redditPosts, setRedditPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchRedditPosts = async () => {
+      const posts = await getRedditPosts(); // Add your subreddit parameter
+      setRedditPosts(posts);
+    };
+
+    fetchRedditPosts();
+  }, []);
+
+
   return (
     <div className="App">
       <Router>
             <NavBar />
             <Routes>
-              <Route path="/" element={<Posts className='posts' posts={SubRedditPosts}/>} />
+              <Route path="/" element={<Posts className='posts' posts={redditPosts}/>} />
               <Route path="/posts/:postId" element={<PostDetailPage />} />
             </Routes>
       </Router>
