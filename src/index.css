@@ -80,3 +80,16 @@ img[src=""],
 img:not([src]) {
   visibility: hidden;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+  background-image: url(/src/media/cookie-placeholder.svg);
+  background-repeat: repeat;
+  background-size: 100px 100px;
+}
