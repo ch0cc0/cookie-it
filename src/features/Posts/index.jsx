@@ -19,7 +19,7 @@ function Posts({className, posts}) {
 }
 
     return (
-      <div class='flex flex-col m-3 space-y-5	items-center'>
+      <div class='flex flex-col m-3 mt-14 space-y-5	items-center'>
         {posts.map((post) => (
           <PostCard key={post.id} post={post} getPostImageUrl={getPostImageUrl}/>
         ))}
