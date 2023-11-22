@@ -9,7 +9,7 @@ function NavBar() {
     return (
       <div className="navbar">
         <div className="navbar-logo">
-          <img src={logo} alt="logo" />
+          {/*<img src={logo} alt="logo" />*/}
           <span className='title'>Cookie-It</span>
         </div>
         <form className="search" >
