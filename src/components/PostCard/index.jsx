@@ -25,7 +25,9 @@ function PostCard({post, getPostMedia}) {
         <Card class="snap-center select-none m-4 hover:shadow-2xl shadow-slate-500/50 hover:bg-[#F1D4E5] w-64 md:w-96 lg:w-2/6 bg-[#FCE9F1] rounded-2xl">
             <CardHeader >
                 <CardTitle class="bg-[#e4bdec] rounded-md mx-2 mt-2 p-2 font-bold md:text-xl">{post.title}</CardTitle>
-                <CardDescription class={`cursor-pointer ${isDescriptionExpanded ? '' : 'line-clamp-3 overflow-hidden'} ${post.selftext ? 'mx-2 p-2' : ''} break-words `} onClick={toggleDescription}>{post.selftext}</CardDescription>
+                <CardDescription class={`cursor-pointer ${isDescriptionExpanded ? '' : 'line-clamp-3 overflow-hidden'} ${post.selftext ? 'mx-2 p-2' : ''} break-words `} onClick={toggleDescription}>
+                    {post.selftext}
+                </CardDescription>
             </CardHeader>
             <CardContent >
                 {media && /\.(mp4|webm)$/.test(media) ? (

@@ -1,29 +1,40 @@
-export const API_ROOT = 'https://www.reddit.com';
+// Now using RTK Query
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const getRedditPosts = async () => {
-    const response = await fetch(`${API_ROOT}/.json?limit=30`);
-    const json = await response.json();
-  
-    return json.data.children.map((post) => post.data);
-};
+export const redditApi = createApi({
+  reducerPath: 'redditApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://www.reddit.com' }),
+  endpoints: (builder) => ({
+    getRedditPosts: builder.query({
+      query: () => '/.json?limit=30',
+      transformResponse: (response) => {
+        return response.data.children.map((post) => post.data);
+        },
+    }),
+    getSubreddits: builder.query({
+      query: () => '/subreddits.json',
+      transformResponse: (response) => {
+        return response.data.children.map((subreddit) => subreddit.data);
+        },
+    }),
+    getSubredditPosts: builder.query({
+      query: (subreddit) => `/${subreddit}.json?limit=30`,
+      transformResponse: (response) => {
+        return response.data.children.map((post) => post.data);
+        },
+    }),
+    getPostComments: builder.query({
+      query: (permalink) => `/${permalink}.json`,
+      transformResponse: (response) => {
+        return response[1].data.children.map((comment) => comment.data);
+        },
+    }),
+  }),
+});
 
-export const getSubreddits = async () => {
-    const response = await fetch(`${API_ROOT}/subreddits.json`);
-    const json = await response.json();
-
-    return json.data.children.map((subreddit) => subreddit.data);
-};
-
-export const getSubredditPosts = async (subreddit) => {
-    const response = await fetch(`${API_ROOT}${subreddit}.json?limit=30`);
-    const json = await response.json();
-
-    return json.data.children.map((post) => post.data);
-};
-
-export const getPostComments = async (permalink) => {
-    const response = await fetch(`${API_ROOT}${permalink}.json`);
-    const json = await response.json();
-
-    return json[1].data.children.map((subreddit) => subreddit.data);
-};
+export const { 
+  useGetRedditPostsQuery, 
+  useGetSubredditsQuery, 
+  useGetSubredditPostsQuery, 
+  useGetPostCommentsQuery 
+} = redditApi;
