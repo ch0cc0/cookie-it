@@ -18,13 +18,13 @@ export const redditApi = createApi({
         },
     }),
     getSubredditPosts: builder.query({
-      query: (subreddit) => `/${subreddit}.json?limit=30`,
+      query: (subreddit) => `/r/${subreddit}.json?limit=30`,
       transformResponse: (response) => {
         return response.data.children.map((post) => post.data);
         },
     }),
     getPostComments: builder.query({
-      query: (permalink) => `/${permalink}.json`,
+      query: (permalink) => `${permalink}.json`,
       transformResponse: (response) => {
         return response[1].data.children.map((comment) => comment.data);
         },

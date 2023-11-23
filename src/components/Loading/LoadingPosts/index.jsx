@@ -1,11 +1,11 @@
 import React from 'react';
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "../../ui/skeleton";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
-  } from "../ui/card"
+  } from "../../ui/card"
 
 function Loading() {
 
