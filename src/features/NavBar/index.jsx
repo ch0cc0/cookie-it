@@ -11,11 +11,11 @@ function NavBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/r/${encodeURIComponent(searchTerm)}`);
+    navigate(`/r/${encodeURIComponent(searchTerm)}`);
   };
 
   return (
-    <div class="select-none text-white flex flex-row h-16 bg-[#080202] space-x-1 items-center justify-center fixed top-0 left-0 right-0">
+    <div class="select-none text-white flex flex-row h-16 bg-[#080202] space-x-1 items-center justify-center fixed top-0 left-0 right-0 z-50">
       <div class="absolute left-0 text-2xl flex">
         <img class="object-cover w-12 animate-bounce ml-2 mt-1 hidden md:block" src={logo} alt="logo" />
         <span class="ml-3 hidden md:block mt-2">Cookie-It</span>

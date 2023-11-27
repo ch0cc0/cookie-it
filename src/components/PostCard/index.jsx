@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import {
     Card,
     CardContent,
@@ -57,18 +56,21 @@ function PostCard({post, getPostMedia}) {
                     media ? <img className="w-full h-50 object-cover" src={media} alt={post.title} /> : null
                 )}
             </CardContent>
-            <CardFooter className="flex mb-2 ml-2 space-x-10">
-                <p className="bg-white rounded-lg p-0.5 shadow-xl font-semibold">{post.author}</p>
+            <CardFooter className="flex flex-col sm:flex-row mb-2 ml-2 space-y-2 sm:space-y-0 sm:space-x-10">
+                <p className="bg-white rounded-lg p-0.5 shadow-xl font-semibold truncate">{post.author}</p>
+                {/* Fix button in mobile viewport going out of the card box */}
                 <button onClick={handleClick} className={`${pulse} flex space-x-1 rounded-full w-auto h-auto p-1 m-0 bg-[#88d8ec]`}>
                     <FontAwesomeIcon className='ml-1 mt-1' icon={faComments}></FontAwesomeIcon>
-                    <p className='text-white font-semibold'>{post.num_comments}</p>
+                    <p className='text-white font-semibold truncate'>{post.num_comments}</p>
                 </button>
             </CardFooter>
-            { showComments && (isLoadingComments ? <LoadingComments /> :
-                (comments || []).map(comment => (
-                    <Comment key={comment.id} comment={comment}/>
-                )))
-             }    
+            <CardContent className="max-h-64 overflow-y-auto custom-scrollbar" >
+                { showComments && (isLoadingComments ? <LoadingComments /> :
+                    (comments || []).map(comment => (
+                        <Comment key={comment.id} comment={comment}/>
+                    )))
+                }    
+            </CardContent>
       </Card>      
     );
 }

@@ -9,7 +9,9 @@ function HomeFeed() {
     if (error) return <div>Error: {error.message}</div>;
     if (isLoading) return <Loading />;
 
-    return <Posts className='flex flex-col items-center' posts={posts || []} />;
+    return (
+    <Posts className='flex flex-col items-center' posts={posts || []} />
+    );
 }
 
 export default HomeFeed;

@@ -1,10 +1,7 @@
 import React from 'react';
 import { Skeleton } from "../../ui/skeleton";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
+    Card
   } from "../../ui/card"
 
 function LoadingComments() {
