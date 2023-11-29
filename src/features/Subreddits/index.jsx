@@ -24,8 +24,8 @@ function Subreddits() {
             <CardHeader className="">Subreddits</CardHeader>
             <CardContent className="custom-scrollbar flex flex-col justify-start gap-y-3 overflow-y-auto max-h-[calc(80vh-5rem)]">
                 {(subreddits || []).map((subreddit) => (
-                    <button className="flex items-center gap-x-2" onClick={() => goToSubreddit(subreddit.display_name)}>
-                    <img src={ subreddit.icon_img || `https://ui-avatars.com/api/?name=${encodeURIComponent(subreddit.display_name)}`}
+                    <button key={subreddit.id} className="flex items-center gap-x-2" onClick={() => goToSubreddit(subreddit.display_name)}>
+                    <img key={subreddit.id} src={ subreddit.icon_img || `https://ui-avatars.com/api/?name=${encodeURIComponent(subreddit.display_name)}`}
                     alt={`${subreddit.display_name}`}
                     className="rounded-full w-12 h-12" />
                 {subreddit.display_name}
